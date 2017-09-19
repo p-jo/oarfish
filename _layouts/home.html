@@ -1,172 +1,65 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-  <title>{{site.title}}</title>
-
+  <title>{{site.title}} - {{page.title}}</title>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <link rel="stylesheet" href="{{ "/assets/css/responsive-tabs.css" | prepend: full_base_url }}">
-
-  <style>
-
-  body {
-    background: #000;
-    font-size: 100%;
-    line-height: 1.5;
-    font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    color: #fff;
-    text-shadow: 1px 1px 1px #333;
-  }
-
-  * { box-sizing: border-box; }
-
-  a,
-  small {
-    color: #fff !important;
-  }
-
-  a {
-    text-decoration: none;
-    -webkit-transition: all 0.5s ease; /* Safari */
-    transition: all 0.5s ease;
-  }
-
-  a:hover {
-    text-decoration: underline;
-  }
-
-  p {
-    margin: 0;
-  }
-
-  h1 {
-    font-size: 2rem;
-    margin: 1rem 0;
-  }
-
-  a.read-more {
-    display: block;
-    text-align: center;
-    border: 1px solid rgba(255,255,255,0.4);
-    text-decoration: none;
-    padding: 0.5rem;
-    margin: 1rem 0;
-  }
-
-  a.read-more:hover {
-    background-color: rgba(255,255,255,0.1);
-  }
-
-
-  /* Content */
-
-  #content {
-  	top: 0;
-  }
-
-  .box {
-    background-color: rgba( 255,255,255, 0.3);
-    position: absolute; top: 0; left: 0; width: 33%;
-    padding: 1.5rem;
-  }
-
-
-  /* Video */
-
-  .video {
-    position: fixed;
-    top: 0; right: 0; bottom: 0; left: 0;
-    z-index: -99;
-  }
-
-  .video-foreground,
-  .video iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-  }
-
-  @media (min-aspect-ratio: 16/9) {
-    .video-foreground { height: 300%; top: -100%; }
-  }
-  @media (max-aspect-ratio: 16/9) {
-    .video-foreground { width: 300%; left: -100%; }
-  }
-  @media all and (max-width: 800px) {
-    .box { width: 100%; top: 60%; }
-  }
-
-  /* Reddit */
-
-  .rembeddit {
-
-  }
-
-  .reddit-header,
-  .reddit-voting-arrows,
-  .reddit-title img,
-  .reddit-entry small {
-    display: none;
-  }
-
-  .reddit-entry {
-    margin-bottom: 1.5rem;
-  }
-
-
-</style>
-
-<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-<script src="{{ "/assets/javascript/script.js" | prepend: full_base_url }}"></script>
-<script src="{{ "/assets/javascript/jquery.responsiveTabs.min.js" | prepend: full_base_url }}"></script>
-
-
+  <link rel="stylesheet" href="{{ "/assets/css/tidy.css" | prepend: full_base_url }}">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-
 <body>
-<!--
+
 <div class="video">
   <div class="video-foreground">
     <iframe id="ytplayer" src="https://www.youtube-nocookie.com/embed/b1I-4-oL4WU?playlist=b1I-4-oL4WU&start=49&rel=0&autoplay=1&controls=0&showinfo=0&loop=1&iv_load_policy=3&enablejsapi=1" frameborder="0" allowfullscreen></iframe>
   </div>
 </div>
--->
+
 <div id="content">
   <div class="box">
     <h1>Oarfish</h1>
-    <div class="wikipedia">
-      <h2>About <small>Wikipedia</small></h2>
+    <!-- Nav tabs -->
+    <ul class="nav nav-pills justify-content-end" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#about" role="tab"><i class="fa fa-info fa-lg" aria-hidden="true"></i></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#links" role="tab"><i class="fa fa-link fa-lg" aria-hidden="true"></i></a>
+      </li>
+    </ul>
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <div class="tab-pane" id="about" role="tabpanel">
+        <div class="content">
+        </div>
+        <p class="more" style="display:none;">
+          <a href="https://en.wikipedia.org/wiki/Oarfish"><i class="fa fa-link" aria-hidden="true"></i> Wikipedia</a>
+        </p>
+        <a href='#' class='read-more'><i class="fa fa-angle-down fa-2x" aria-hidden="true"></i></a>
+      </div>
+      <div class="tab-pane" id="links" role="tabpanel">
+        <h2>Links</h2>
+        <script src="https://www.reddit.com/r/Oarfish/.embed?limit=5&t=all&style=off" type="text/javascript"></script>
+        <p>
+          <a href="https://www.reddit.com/r/Oarfish"><i class="fa fa-link" aria-hidden="true"></i> Reddit</a>
+        </p>
+      </div>
     </div>
-
-    <div id="responsiveTabsDemo">
-    <ul>
-            <li><a href="#tab-1"> .... </a></li>
-            <li><a href="#tab-2"> .... </a></li>
-            <li><a href="#tab-3"> .... </a></li>
-        </ul>
-
-        <div id="tab-1"> ....... </div>
-        <div id="tab-2"> ....... </div>
-        <div id="tab-3"> ....... </div>
-    </div>
-
-    <h2>Links <small>Reddit</small></h2>
-    <script src="https://www.reddit.com/r/Oarfish/.embed?limit=10&t=all&style=off" type="text/javascript"></script>
   </div>
 </div>
 
-
-<!-- Thanks https://codepen.io/dudleystorey/pen/PZyMrd
+<!--
+Thanks to
+https://codepen.io/dudleystorey/pen/PZyMrd
 http://jsfiddle.net/Jonathan_Ironman/BFDKS/9/
-
 TODO: https://webapps.stackexchange.com/questions/45884/have-an-embedded-youtube-video-loop-end-at-specified-time-every-time-it-plays
 -->
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+<script src="{{ "/assets/javascript/script.js" | prepend: full_base_url }}"></script>
 
 </body>
 </html>

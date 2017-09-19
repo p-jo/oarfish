@@ -25,9 +25,8 @@ $( document ).ready(function() {
         var words = item.extract.match( /[^\.!\?]+[\.!\?]+/g );
         var extract = words.slice(0,3).join(" ");
         var fullText =  words.slice(3).join(" ");
-        $( "<p></p>" ).html(extract).appendTo( ".wikipedia" );
-        $( "<p class='more'></p>" ).html(fullText).appendTo( ".wikipedia" ).hide();
-        $( "<a href='#' class='read-more'>Read more</a>" ).appendTo( ".wikipedia" );
+        $( "<p></p>" ).html(extract).appendTo( ".content" );
+        $( "<p class='more'></p>" ).html(fullText).appendTo( ".content" ).hide();
       });
 
       $('.read-more').click(function(e){
@@ -35,20 +34,12 @@ $( document ).ready(function() {
         var link = $(this);
         $('.more').slideToggle('slow', function() {
           if ($(this).is(':visible')) {
-            link.text('Read less');
+            link.html('<i class="fa fa-angle-up fa-2x" aria-hidden="true"></i>');
           } else {
-            link.text('Read more');
+            link.html('<i class="fa fa-angle-down fa-2x" aria-hidden="true"></i>');
           }
         });
       });
-
-
     });
   })();
-
-  $('#responsiveTabsDemo').responsiveTabs({
-      startCollapsed: 'accordion'
-  });
-
-
 });

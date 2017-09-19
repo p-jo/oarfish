@@ -1,0 +1,175 @@
+/*** uncss> filename: _site/assets/css/main.css ***/
+body {
+  background: blue;
+  font-size: 100%;
+  line-height: 1.5;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: rgba(255,255,255,0.9);
+  text-shadow: 1px 1px 1px #333;
+}
+
+* { box-sizing: border-box; }
+
+a {
+  text-decoration: none;
+  -webkit-transition: all 0.5s ease; /* Safari */
+  transition: all 0.5s ease;
+  color: rgba(255,255,255,0.8);
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #fff;
+}
+
+p {
+  margin: 0 0 1rem 0;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 0.5rem 0;
+  line-height: 0.75;
+}
+
+h2 {
+  font-size: 1.5rem;
+/*  border-top: 1px solid rgba(255,255,255,0.4);
+  padding-top: 1rem; */
+  margin: 2rem 0 1rem;
+}
+
+a.read-more {
+  display: block;
+  text-align: center;
+  border: 1px solid rgba(255,255,255,0.4);
+  text-decoration: none;
+  padding: 0.25rem;
+  margin-top: 1.5rem;
+}
+
+a.read-more:hover {
+  background-color: rgba(255,255,255,0.1);
+}
+
+
+/* Content */
+
+#content {
+  top: 0;
+}
+
+.box {
+  background: -moz-linear-gradient(top, rgba(0,0,0,0.65) 50%, rgba(0,0,0,0) 100%);
+  background: -webkit-linear-gradient(top, rgba(0,0,0,0.65) 50%,rgba(0,0,0,0) 100%);
+  background: linear-gradient(to bottom, rgba(0,0,0,0.65) 50%,rgba(0,0,0,0) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=0 );
+
+  position: absolute; top: 0; left: 0; width: 30%;
+  padding: 1.5rem 1.5rem 2rem;
+}
+
+.tab-pane {
+  margin-top: 1.5rem;
+}
+
+ul {
+  margin: 0;
+}
+
+/* Video */
+
+.video {
+  position: fixed;
+  top: 0; right: 0; bottom: 0; left: 0;
+  z-index: -99;
+}
+
+.video-foreground,
+.video iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+@media (min-aspect-ratio: 16/9) {
+  .video-foreground { height: 300%; top: -100%; }
+}
+@media (max-aspect-ratio: 16/9) {
+  .video-foreground { width: 300%; left: -100%; }
+}
+@media all and (max-width: 1100px) {
+  .box { width: 40%; }
+}
+@media all and (max-width: 768px) {
+  .box { width: 100%; }
+  h1 {
+    position: absolute;
+  }
+  h2 {
+    display: none;
+  }
+}
+
+/* Reddit */
+
+.rembeddit {
+
+}
+
+.reddit-header,
+.reddit-voting-arrows,
+.reddit-title img,
+.reddit-entry small {
+  display: none;
+}
+
+.reddit-entry {
+  margin-bottom: 1rem;
+}
+
+/* Accordion responsive breakpoint */
+@media all and (min-width: 769px) {
+  .box .tab-content > .tab-pane {
+    display: block;
+  }
+  .box .nav {
+    display: none;
+  }
+}
+
+
+/*** uncss> filename: _site/assets/css/tabs.css ***/
+/*!
+ * Bootstrap v4.0.0-beta (https://getbootstrap.com)
+ * Copyright 2011-2017 The Bootstrap Authors
+ * Copyright 2011-2017 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ */
+.nav { display: flex; flex-wrap: wrap; padding-left: 0; margin-bottom: 0; list-style: none; }
+
+.nav-link:focus, .nav-link:hover { text-decoration: none; }
+
+.tab-content > .tab-pane { display: none; }
+
+.justify-content-end { justify-content: flex-end !important; }
+
+@supports (position: sticky) { }
+
+.tab-content > .active { display: block; }
+
+.nav-link {
+  display: block;
+  padding: 0.5rem 1rem;
+  border: 1px solid transparent;
+}
+.nav-link:hover {
+  background-color: rgba(255,255,255,0.1);
+}
+
+.nav-pills .nav-link.active, .show > .nav-pills .nav-link {
+  border-color: rgba(255,255,255,0.3);
+}

@@ -1,5 +1,5 @@
-
 body {
+  background: #000;
   font-size: 100%;
   line-height: 1.5;
   font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -16,28 +16,56 @@ small {
 
 a {
   text-decoration: none;
+  -webkit-transition: all 0.5s ease; /* Safari */
+  transition: all 0.5s ease;
 }
+
+a:hover {
+  text-decoration: underline;
+}
+
+p {
+  margin: 0;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 0.5rem 0;
+}
+
+a.read-more {
+  display: block;
+  text-align: center;
+  border: 1px solid rgba(255,255,255,0.4);
+  text-decoration: none;
+  padding: 0.5rem;
+  margin: 1rem 0;
+}
+
+a.read-more:hover {
+  background-color: rgba(255,255,255,0.1);
+}
+
 
 /* Content */
 
 #content {
-	top: 0;
+  top: 0;
 }
 
 .box {
   background-color: rgba( 255,255,255, 0.3);
-  position: absolute; top: 0; right: 0; width: 33%;
+  position: absolute; top: 0; left: 0; width: 33%;
+  padding: 1.5rem;
 }
 
-.wikipedia {
-  padding: 10px;
+.tab-content {
+  padding: 1rem 0;
 }
-
 
 /* Video */
 
 .video {
-  background: #000;
   position: fixed;
   top: 0; right: 0; bottom: 0; left: 0;
   z-index: -99;
@@ -59,28 +87,23 @@ a {
 @media (max-aspect-ratio: 16/9) {
   .video-foreground { width: 300%; left: -100%; }
 }
-@media all and (max-width: 800px) {
-  .box { width: 100%; top: 60%; }
+@media all and (max-width: 768px) {
+  .box { width: 100%; }
+  h1 {
+    position: absolute;
+  }
 }
 
 /* Reddit */
 
 .rembeddit {
-  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
-  border: 0 !important;
-  color: #fff !important;
-  background-color: transparent !important;
-}
-.reddit-header {
-  background-color: transparent !important;
+
 }
 
-.reddit-title {
-  font-weight: normal !important;
-  font-size: 0.8333rem;
-}
-
-.reddit-title img {
+.reddit-header,
+.reddit-voting-arrows,
+.reddit-title img,
+.reddit-entry small {
   display: none;
 }
 
@@ -88,6 +111,12 @@ a {
   margin-bottom: 1.5rem;
 }
 
-.reddit-link-title {
-  font-size: 1rem !important;
+/* Accordion responsive breakpoint */
+@media all and (min-width: 768px) {
+  .box .tab-content > .tab-pane {
+    display: block;
+  }
+  .box .nav-tabs {
+    display: none;
+  }
 }
