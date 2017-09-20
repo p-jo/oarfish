@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="{{page.lang}}">
 <head>
-  <title>{{site.title}} - {{page.title}}</title>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% seo %}
   <link rel="stylesheet" href="{{ "/assets/css/main.css" | prepend: full_base_url }}">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -18,7 +18,7 @@
 
 <div id="content">
   <div class="box">
-    <h1>Oarfish</h1>
+    <h1>{{page.title}}</h1>
     <!-- Nav tabs -->
     <ul class="nav nav-pills justify-content-end" role="tablist">
       <li class="nav-item">
@@ -34,12 +34,12 @@
         <div class="content">
         </div>
         <p class="more" style="display:none;">
-          <a href="https://en.wikipedia.org/wiki/Oarfish"><i class="fa fa-link" aria-hidden="true"></i> Wikipedia</a>
+          <a href="https://{{page.lang}}.wikipedia.org/wiki/{{page.title}}"><i class="fa fa-link" aria-hidden="true"></i> Wikipedia</a>
         </p>
         <a href='#' class='read-more'><i class="fa fa-angle-down fa-2x" aria-hidden="true"></i></a>
       </div>
       <div class="tab-pane" id="links" role="tabpanel">
-        <h2>Links</h2>
+        <h2>{{page.subtitle}}</h2>
         <script src="https://www.reddit.com/r/Oarfish/.embed?limit=5&t=all&style=off" type="text/javascript"></script>
         <p>
           <a href="https://www.reddit.com/r/Oarfish"><i class="fa fa-link" aria-hidden="true"></i> Reddit</a>
@@ -60,6 +60,34 @@ TODO: https://webapps.stackexchange.com/questions/45884/have-an-embedded-youtube
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 <script src="{{ "/assets/javascript/script.js" | prepend: full_base_url }}"></script>
+<script>
+$( document ).ready(function() {
+  (function() {
+    var wikipedia = "https://{{page.lang}}.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles={{page.title}}&callback=?";
+    $.getJSON( wikipedia )
+    .done(function( data ) {
+      $.each( data.query.pages, function( i, item ) {
+        var words = item.extract.match( /[^\.!\?]+[\.!\?]+/g );
+        var extract = words.slice(0,3).join(" ");
+        var fullText =  words.slice(3).join(" ");
+        $( "<p></p>" ).html(extract).appendTo( ".content" );
+        $( "<p class='more'></p>" ).html(fullText).appendTo( ".content" ).hide();
+      });
 
+      $('.read-more').click(function(e){
+        e.preventDefault();
+        var link = $(this);
+        $('.more').slideToggle('slow', function() {
+          if ($(this).is(':visible')) {
+            link.html('<i class="fa fa-angle-up fa-2x" aria-hidden="true"></i>');
+          } else {
+            link.html('<i class="fa fa-angle-down fa-2x" aria-hidden="true"></i>');
+          }
+        });
+      });
+    });
+  })();
+});
+</script>
 </body>
 </html>
