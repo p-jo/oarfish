@@ -113,7 +113,7 @@ ul {
 @media all and (max-width: 768px) {
   .box { width: 100%; }
   h1 {
-  /*  position: absolute; */
+    position: absolute;
   }
   h2 {
     display: none;
