@@ -2,8 +2,8 @@
 title: Oarfish
 github_username: p-jo
 repository: p-jo/oarfish
-baseurl:
-url: http://petterjoelson.com/oarfish
+baseurl: /oarfish
+url: https://p-jo.github.io
 author: Petter Joelson
 twitter:
   username: p_jo
