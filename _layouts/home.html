@@ -57,12 +57,12 @@ TODO: https://webapps.stackexchange.com/questions/45884/have-an-embedded-youtube
 -->
 
 <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 <script src="{{site.baseurl}}/assets/javascript/script.js"></script>
 <script>
 $( document ).ready(function() {
   (function() {
+
+    // Get Wikipedia text
     var wikipedia = "https://{{page.lang}}.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles={{page.title}}&callback=?";
     $.getJSON( wikipedia )
     .done(function( data ) {
@@ -74,6 +74,7 @@ $( document ).ready(function() {
         $( "<p class='more'></p>" ).html(fullText).appendTo( ".content" ).hide();
       });
 
+      // Read more button
       $('.read-more').click(function(e){
         e.preventDefault();
         var link = $(this);
@@ -87,6 +88,18 @@ $( document ).ready(function() {
       });
     });
   })();
+
+  // Tabs - almost replicate bootstrap
+  var tab = '[data-toggle=tab]';
+  $(tab).click(function(e){
+    e.preventDefault();
+    var tabContent = $(this).attr("href");
+    $(tab).not(this).removeClass('active');
+    $('.tab-pane').not(tabContent).removeClass('active');
+    $(this).toggleClass('active');
+    $(tabContent).toggleClass('active');
+   })
+
 });
 </script>
 </body>
